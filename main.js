@@ -44,8 +44,8 @@ class LinkedList {
 let train = new LinkedList()
 train.append(1)
 train.append(2)
-train.append(3)
-train.append(4)
+// train.append(3)
+// train.append(4)
 console.log(train)
 
 
