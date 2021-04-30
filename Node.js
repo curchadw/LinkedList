@@ -23,7 +23,7 @@
 //Requires two classes node and list
 
 //a node class
-class Node{
+export default class Node{
   constructor(el){
     this.el = el
     this.next = 'Tail'
@@ -31,7 +31,7 @@ class Node{
   }
 }
 
-export default Node
+
 
 
 

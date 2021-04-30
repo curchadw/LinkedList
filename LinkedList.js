@@ -1,4 +1,4 @@
-class LinkedList {
+export default class LinkedList {
     constructor(headNode){
       this.head = headNode || null
       this.size = headNode ? 1 : 0
@@ -19,16 +19,18 @@ class LinkedList {
       this.head = null
     }
 
-    getlast(){
-
+    append(arg){
+      
+      if (!this.head || !this.tail){
+        this.head = new Node(arg)
+        this.tail = new Node(arg)
+      }
+        this.tail.next = node
+        this.tail = node
+        this.size++
     }
-
-    getFirst(){}
-
-
 }
 
-export default LinkedList
 
 
 //append(value)
