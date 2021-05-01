@@ -1,9 +1,9 @@
 
 
 class Node{
-  constructor(el){
+  constructor(el, next=null){
     this.el = el
-    this.next = null
+    this.next = next
     // this.prev = null
     // this.prev = null //only if doubly linked list
   }
@@ -15,7 +15,7 @@ class LinkedList {
     constructor(head){
       this.head = head || null
       this.tail = null
-      this.size = 0
+      this.length = 0
      
     }
 
@@ -36,28 +36,36 @@ class LinkedList {
        this.head = node
        this.tail = node
       //  this.size++
-       this.size = 1
+       this.length = 1
       }else{
         this.tail.next = node
         this.tail = node
-        this.size++
+        this.length++
       }
     }
 
     prepend(val){
       //create an element
-      const node = new Node(val)
+      // const node = new Node(val)
 
-      if(!this.head || !this.tail){
-        this.head = node
-        this.tail = node
-        this.size = 1
-      }
-      else{
-        node.next = this.head
-        this.head = node
-        this.size++
-      }
+      // if(!this.head || !this.tail){
+      //   this.head = node
+      //   this.tail = node
+      //   this.size = 1
+      // }
+      // else{
+      //   node.next = this.head
+      //   this.head = node
+      //   this.size++
+      // }
+
+      let next = this.head;
+
+      this.head = new Node(val, next)
+      this.length++
+
+      return this.head 
+
     }
     // create a temp pointer that will iterate through the linked list
     //check value is equal
@@ -78,26 +86,41 @@ class LinkedList {
 
     
     }
-    //current.next = curren.next.next
-    remove(val,position = 0){
-      let current = this.head
+    //current.next = current.next.next
     
-        if (position <= 0){
-          current = this.head.next
-        }else if (positon >= this.length -1){
-          while(current.next.next != null){
-            current = current.next
-          }
-          current.next = nul
-        }else{
-          let iter = 0;
-          while(iter < position){
-            current = current.next; iter++
-          }
-          current.next = current.next.next
-        }
-    }
 
+
+
+
+
+    remove(index){
+      //keep track of previous pointer
+      let deletedNode;
+
+      if (index === 0){
+        deletedNode = this.head
+        let nextNode = deletedNode.next;
+        this.head = nextNode
+      }else if (index !== this.length -1){
+        let current = this.head
+        let count = 0
+
+        while(count !== index -1){
+          count++
+          current = current.next
+        }
+
+        let prevNode = current
+        deletedNode = prevNode.next
+        let nextNode = deletedNode.next
+
+        prevNode.next = nextNode
+      }
+
+      this.length--
+      return this
+     
+    }
     reverse(){}
 }
 
@@ -112,12 +135,12 @@ train.append(2)
 train.append(3)
 train.append(4)
 // console.log(train.print())
-// train.prepend('New head')
+train.prepend('New head')
 // console.log(train.print())
 // train.append(6)
 // console.log(train.print())
 // console.log(train.find(10))
-train.remove(3)
+train.remove(2)
 console.log(train.print())
 
 
