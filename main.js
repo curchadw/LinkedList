@@ -96,7 +96,7 @@ class LinkedList {
     remove(index){
       //keep track of previous pointer
       let deletedNode;
-
+      //deletes from the beginning
       if (index === 0){
         deletedNode = this.head
         let nextNode = deletedNode.next;
@@ -118,10 +118,31 @@ class LinkedList {
       }
 
       this.length--
-      return this
+      return deletedNode
      
     }
-    reverse(){}
+    reverse(head){
+      //1. sway head and tail
+      let node = this.head
+      this.head = this.tail
+      this.tail = node
+      //2. write a for loop to lopp through each node in the list. THe old head is already stored as a variable called node. We will need to create teo other variables to keep strack of previous values and next value
+      let prev = null;
+      let next;
+
+      for (let i = 0; i > this.length; i++){
+        next = node.next;
+        node.next = prev;
+        prev = node
+        node = next
+      }
+
+      //4. finally we will shift the node value and previous value over by one. All we need to do is set previous to be node, and set node to be next. At the end of the loop, we will return to list by returning this.
+
+
+      return this
+
+    }
 }
 
 
@@ -140,8 +161,11 @@ train.prepend('New head')
 // train.append(6)
 // console.log(train.print())
 // console.log(train.find(10))
-train.remove(2)
-console.log(train.print())
+// train.remove(2)
+console.log(train.reverse())
+
+
+
 
 
 
