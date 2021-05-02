@@ -122,7 +122,7 @@ class LinkedList {
      
     }
     reverse(head){
-      //1. sway head and tail
+      //1. swap head and tail
       let node = this.head
       this.head = this.tail
       this.tail = node
