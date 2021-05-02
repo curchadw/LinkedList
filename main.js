@@ -130,7 +130,7 @@ class LinkedList {
       let prev = null;
       let next;
 
-      for (let i = 0; i > this.length; i++){
+      for (let i = 0; i < this.length; i++){
         next = node.next;
         node.next = prev;
         prev = node
@@ -162,7 +162,8 @@ train.prepend('New head')
 // console.log(train.print())
 // console.log(train.find(10))
 // train.remove(2)
-console.log(train.reverse())
+train.reverse()
+console.log(train.print())
 
 
 
